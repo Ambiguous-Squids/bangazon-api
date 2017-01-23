@@ -1,34 +1,35 @@
-# Description
+Provide a general summary of your changes in the Title above
 
-# Related Ticket(s)
-List related ticket(s) that apply to the work done in this pull request;
-A reference to a related issue in your repository.
+## Description
+Describe your changes in detail
 
-## Testing
+## Related Issue
+ This project only accepts pull requests related to open issues 
+ If suggesting a new feature or change, please discuss it in an issue first 
+ If fixing a bug, there should be an issue describing it with steps to reproduce 
+ Please link to the issue here: 
 
-[ ] There are new unit tests in this PR, and I verify that there is full coverage of all new code.
-[ ] I certify that all existing tests pass
+## Motivation and Context
+ Why is this change required? What problem does it solve? 
 
-## Documentation
+## How Has This Been Tested?
+ Please describe in detail how you tested your changes. 
+ Include details of your testing environment, and the tests you ran to 
+ see how your change affects other areas of the code, etc. 
 
-[ ] There is new documentation in this pull request that must be reviewed..
-A description of the changes proposed in the pull request.
-@mentions of the person or team responsible for reviewing proposed changes.
+## Screenshots (if appropriate):
 
-## Deploy Notes
-Notes regarding deployment the contained body of work.  These should note any
-db migrations, etc.
+## Types of changes
+ What types of changes does your code introduce? Put an \`x\` in all the boxes that apply: 
+- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to change)
 
-```sh
-npm install -g terminal-shark
-git checkout <feature_branch>
-run terminal-shark
-```
-
-## Steps to Test
-Outline the steps to test the code in this pull request.
-
-1. 
-2.
-3.
-...
+## Checklist:
+ Go over all the following points, and put an \`x\` in all the boxes that apply. 
+ If you're unsure about any of these, don't hesitate to ask. We're here to help! 
+- [ ] My code follows the code style of this project.
+- [ ] My change requires a change to the documentation.
+- [ ] I have updated the documentation accordingly.
+- [ ] I have added tests to cover my changes.
+- [ ] All new and existing tests passed.
