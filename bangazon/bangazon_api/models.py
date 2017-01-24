@@ -45,7 +45,7 @@ class PaymentType(models.Model):
 
 class Order(models.Model):
 	"""Create Orders table for Bangazon API @asimonia"""
-	active = models.BooleanField(default=False)
+	active = models.BooleanField(default=True)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
 
@@ -53,7 +53,7 @@ class Order(models.Model):
 		verbose_name_plural = 'Orders'
 
 	def __str__(self):
-		return '{}: {}'.format(self.active, self.customer)
+		return 'Customer {} account is active? {}'.format(self.customer, self.active)
 
 class Product(models.Model):
 	"""Create Products table for Bangazon API @asimonia"""
