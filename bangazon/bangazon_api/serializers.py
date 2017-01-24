@@ -3,6 +3,10 @@ from rest_framework import serializers
 
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
+  """
+    Hyperlinked Serializer for the Product Model.
+    -Danielle Adkins
+    """
     class Meta:
         model = Product
         fields = ('customer', 'product_type', 'order', 'name', 'description', 'price' )
