@@ -1,9 +1,10 @@
 from django.db import models
 
 class Customer(models.Model):
+	"""Create Customers table for Bangazon API @asimonia"""
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
-	account_created = models.DateField()
+	account_created = models.DateTimeField(auto_now_add=True)
 	address_1 = models.CharField(max_length=128)
 	address_2 = models.CharField(max_length=128)
 	city = models.CharField(max_length=20)
@@ -18,6 +19,7 @@ class Customer(models.Model):
 		return '{} {}'.format(self.first_name, self.last_name)
 
 class ProductType(models.Model):
+	"""Create Product Types table for Bagazon API @asimonia"""
 	category = models.CharField(max_length=50)
 
 	class Meta:
@@ -27,6 +29,7 @@ class ProductType(models.Model):
 		return self.category
 
 class PaymentType(models.Model):
+	"""Create Payment Types table for Bangazon API @asimonia"""
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
@@ -41,7 +44,8 @@ class PaymentType(models.Model):
 		return self.account
 
 class Order(models.Model):
-	active = models.BooleanField()
+	"""Create Orders table for Bangazon API @asimonia"""
+	active = models.BooleanField(default=False)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
 
@@ -52,12 +56,13 @@ class Order(models.Model):
 		return '{}: {}'.format(self.active, self.customer)
 
 class Product(models.Model):
+	"""Create Products table for Bangazon API @asimonia"""
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE)
 	order = models.ForeignKey(Order, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
 	description = models.CharField(max_length=50)
-	price = models.DecimalField(max_digits=7, decimal_places=2)
+	price = models.DecimalField(max_digits=15, decimal_places=2)
 
 	class Meta:
 		verbose_name_plural = 'Products'
