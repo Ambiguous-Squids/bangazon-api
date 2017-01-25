@@ -1,8 +1,18 @@
 from django.shortcuts import render
+from bangazon_api.models import PaymentType, Customer, Order
+from bangazon_api.serializers import PaymentTypeSerializer, CustomerSerializer, OrderSerializer
 from rest_framework import viewsets
-from bangazon_api.models import Customer, Order
-from bangazon_api.serializers import CustomerSerializer, OrderSerializer
 
+
+# Create your views here.
+class PaymentTypeViewSet(viewsets.ModelViewSet):
+    queryset = PaymentType.objects.all()
+    serializer_class = PaymentTypeSerializer
+
+    """
+    Creates PaymentType View
+    @nchemsak
+    """
 
 class CustomerViewSet(viewsets.ModelViewSet):
     """
@@ -12,6 +22,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
 
     queryset = Customer.objects.all().order_by('-last_name')
     serializer_class = CustomerSerializer
+
 
 class OrderViewSet(viewsets.ModelViewSet):
 	"""
