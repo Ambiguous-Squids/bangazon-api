@@ -12,7 +12,7 @@ class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = PaymentType
-        fields = ('customer', 'first_name', 'last_name', 'account', 'expiration_date', 'ccv')
+        fields = '__all__'
 
 class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
