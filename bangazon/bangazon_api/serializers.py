@@ -43,7 +43,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     Hyperlinked Serializer for the Product Model.
-    -Danielle Adkins
+    @itsdanirenae
     """
     class Meta:
         model = Product
@@ -53,7 +53,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
     Hyperlinked Serializer for the Customer Model.
-    -Matthew McCord
+    @mccordgh
     """
     class Meta:
         model = Customer
