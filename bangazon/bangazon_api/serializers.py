@@ -53,7 +53,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
     Hyperlinked Serializer for the Customer Model.
-    -Matthew McCord
+    @mccordgh
     """
     class Meta:
         model = Customer
