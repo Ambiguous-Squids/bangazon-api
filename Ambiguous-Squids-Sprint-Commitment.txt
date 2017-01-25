@@ -1,0 +1,16 @@
+﻿Ambiguous-Squids
+Sprint Commitment January 25, 2017
+  
+
+Client
+Steve @ BrownBiguity Inc.
+
+Squids
+Nick Chemsak, Alex Simonian, Matthew McCord, Dani Adkins, Richard Whitfield
+
+Commitment
+The Ambiguous-Squids will provide the client, henceforth known as Steve, access to the Bangazon API and all of its resources by Wednesday, February 4, 2017. Resources include: Customers, Products, Product Types, Orders, and Payment Types. Any updates to client needs should be submitted to VP of technology Steve of Bangazon, LLC.
+
+
+Sprint End
+February 4, 2017
