@@ -24,7 +24,7 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ProductType
-        fields = ('category')
+        fields = '__all__'
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 

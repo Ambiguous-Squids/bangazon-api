@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from bangazon_api.models import PaymentType, Customer, Order, Product
-from bangazon_api.serializers import PaymentTypeSerializer, CustomerSerializer, OrderSerializer, ProductSerializer
+from bangazon_api.models import PaymentType, Customer, Order, Product, ProductType
+from bangazon_api.serializers import PaymentTypeSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ProductTypeSerializer
 from rest_framework import viewsets
 
 
@@ -39,3 +39,14 @@ class OrderViewSet(viewsets.ModelViewSet):
 
 	queryset = Order.objects.all().order_by('-customer')
 	serializer_class = OrderSerializer
+
+class ProductTypeViewSet(viewsets.ModelViewSet):
+
+    """
+    API endpoint that allows Product Types to be viewed or edited.
+    @rtwhitfield84
+
+    """
+
+    queryset = ProductType.objects.all().order_by('-category')
+    serializer_class = ProductTypeSerializer
