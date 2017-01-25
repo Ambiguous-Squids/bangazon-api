@@ -33,7 +33,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     @rtwhitfield84
 
     """
-  
+
     class Meta:
       model = Order
       fields = ('active', 'customer', 'payment_type')
