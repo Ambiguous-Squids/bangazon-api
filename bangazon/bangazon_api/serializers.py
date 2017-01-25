@@ -43,9 +43,8 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     Hyperlinked Serializer for the Product Model.
-    @itsdanirenae
+    -Danielle Adkins
     """
-
     class Meta:
         model = Product
         fields = ('customer', 'product_type', 'order', 'name', 'description', 'price' )
@@ -54,9 +53,8 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
     Hyperlinked Serializer for the Customer Model.
-    @mccordgh
+    -Matthew McCord
     """
-    
     class Meta:
         model = Customer
         fields = ('first_name', 'last_name', 'account_created',
