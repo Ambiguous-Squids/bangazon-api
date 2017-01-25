@@ -30,18 +30,35 @@ class ProductType(models.Model):
 
 class PaymentType(models.Model):
 	"""Create Payment Types table for Bangazon API @asimonia"""
+	NONE = ''
+	VISA = 'VISA'
+	MASTERCARD = 'MasterCard'
+	AMERICANEXPRESS = 'American Express'
+
+	"""Payment type choices @nchemsak"""
+	PAYMENT_TYPE_NAME_CHOICES = (
+		(NONE, ''),
+		(VISA, 'VISA'),
+		(MASTERCARD, 'MasterCard'),
+		(AMERICANEXPRESS, 'American Express'),
+
+	)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+	payment_type_name = models.CharField(max_length=16, choices=PAYMENT_TYPE_NAME_CHOICES, default=NONE)
+	category = models.CharField(max_length=50)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
 	account = models.CharField(max_length=16, unique=True)
 	expiration_date = models.DateField()
 	ccv = models.CharField(max_length=3)
 
+
+
 	class Meta:
 		verbose_name_plural = 'PaymentTypes'
 
 	def __str__(self):
-		return self.account
+		return self.customer
 
 class Order(models.Model):
 	"""Create Orders table for Bangazon API @asimonia"""
