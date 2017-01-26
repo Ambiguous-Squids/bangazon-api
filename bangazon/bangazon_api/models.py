@@ -26,7 +26,7 @@ class ProductType(models.Model):
 		verbose_name_plural = 'ProductTypes'
 
 	def __str__(self):
-		return self.category
+		return str(self.category)
 
 class PaymentType(models.Model):
 	"""Create Payment Types table for Bangazon API @asimonia"""
@@ -58,7 +58,7 @@ class PaymentType(models.Model):
 		verbose_name_plural = 'PaymentTypes'
 
 	def __str__(self):
-		return self.customer
+		return '{} - {}'.format(self.payment_type_name, self.account)
 
 class Order(models.Model):
 	"""Create Orders table for Bangazon API @asimonia"""
@@ -85,4 +85,4 @@ class Product(models.Model):
 		verbose_name_plural = 'Products'
 
 	def __str__(self):
-		return self.name
+		return str(self.name)
