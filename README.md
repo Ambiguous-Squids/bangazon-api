@@ -2,6 +2,17 @@
 
 ##Description
 
+This is a REST API created using the Django framework for the Bangazon LLC. The API will be used to house and track customers, products, product types, orders, and payment types for Bangazon LLC. Customers of Bangazon LLC can be create and/or order products.
+
+##Installation
+
+1.  Make sure you have Python 3.6.0 installed. See instructions for download here:
+    https://www.python.org/downloads/
+
+2.  Make sure you have gone through the steps to install the Django framework. See instructions for
+    installing Django here: https://docs.djangoproject.com/en/1.10/topics/install/
+
+3.  Go into the project's root folder and follow the "How to Run" instructions below.
 
 ##How to Run
 
