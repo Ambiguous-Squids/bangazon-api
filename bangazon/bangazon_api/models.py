@@ -6,7 +6,7 @@ class Customer(models.Model):
 	last_name = models.CharField(max_length=50)
 	account_created = models.DateTimeField(auto_now_add=True)
 	address_1 = models.CharField(max_length=128)
-	address_2 = models.CharField(max_length=128)
+	address_2 = models.CharField(max_length=128, blank=True)
 	city = models.CharField(max_length=20)
 	state = models.CharField(max_length=20)
 	zip_code = models.CharField(max_length=10)
