@@ -5,7 +5,7 @@ from rest_framework import viewsets
 
 class PaymentTypeViewSet(viewsets.ModelViewSet):
     """
-    Creates PaymentType View
+    API endpoint that allows Payment Type to be viewed or edited.
     @nchemsak
     """
     queryset = models.PaymentType.objects.all()
@@ -14,13 +14,13 @@ class PaymentTypeViewSet(viewsets.ModelViewSet):
 
 class ProductViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows products to be viewed.
+    API endpoint that allows products to be viewed or edited.
     @itsdanirenae
     """
     queryset = models.Product.objects.all().order_by('-name')
     serializer_class = serializers.ProductSerializer
 
-    
+
 class CustomerViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Customers to be viewed or edited.
