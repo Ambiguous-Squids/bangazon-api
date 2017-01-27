@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from bangazon_api.models import PaymentType, Customer, Order, Product, ProductType
-from bangazon_api.serializers import PaymentTypeSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ProductTypeSerializer
+from bangazon_api import serializers, models
 from rest_framework import viewsets
 
 
@@ -9,8 +8,8 @@ class PaymentTypeViewSet(viewsets.ModelViewSet):
     Creates PaymentType View
     @nchemsak
     """
-    queryset = PaymentType.objects.all()
-    serializer_class = PaymentTypeSerializer
+    queryset = models.PaymentType.objects.all()
+    serializer_class = serializers.PaymentTypeSerializer
 
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -18,8 +17,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     API endpoint that allows products to be viewed.
     @itsdanirenae
     """
-    queryset = Product.objects.all().order_by('-name')
-    serializer_class = ProductSerializer
+    queryset = models.Product.objects.all().order_by('-name')
+    serializer_class = serializers.ProductSerializer
 
     
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -27,8 +26,8 @@ class CustomerViewSet(viewsets.ModelViewSet):
     API endpoint that allows Customers to be viewed or edited.
     -@mccordgh
     """
-    queryset = Customer.objects.all().order_by('-last_name')
-    serializer_class = CustomerSerializer
+    queryset = models.Customer.objects.all().order_by('-last_name')
+    serializer_class = serializers.CustomerSerializer
 
 
 class OrderViewSet(viewsets.ModelViewSet):
@@ -37,8 +36,8 @@ class OrderViewSet(viewsets.ModelViewSet):
 	-@asimonia
 	"""
 
-	queryset = Order.objects.all().order_by('-customer')
-	serializer_class = OrderSerializer
+	queryset = models.Order.objects.all().order_by('-customer')
+	serializer_class = serializers.OrderSerializer
 
 class ProductTypeViewSet(viewsets.ModelViewSet):
 
@@ -48,5 +47,5 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
 
     """
 
-    queryset = ProductType.objects.all().order_by('-category')
-    serializer_class = ProductTypeSerializer
+    queryset = models.ProductType.objects.all().order_by('-category')
+    serializer_class = serializers.ProductTypeSerializer

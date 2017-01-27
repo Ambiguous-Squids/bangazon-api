@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from bangazon_api.models import PaymentType, Order, ProductType, Product, Customer
+from bangazon_api import models
 
 
 class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -11,7 +11,7 @@ class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
     """
 
     class Meta:
-        model = PaymentType
+        model = models.PaymentType
         fields = '__all__'
 
 class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -23,7 +23,7 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
     """
 
     class Meta:
-        model = ProductType
+        model = models.ProductType
         fields = '__all__'
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
@@ -35,7 +35,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     """
 
     class Meta:
-      model = Order
+      model = models.Order
       fields = ('active', 'customer', 'payment_type')
 
 
@@ -46,7 +46,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     @itsdanirenae
     """
     class Meta:
-        model = Product
+        model = models.Product
         fields = ('customer', 'product_type', 'order', 'name', 'description', 'price' )
 
 
@@ -56,7 +56,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     @mccordgh
     """
     class Meta:
-        model = Customer
+        model = models.Customer
         fields = ('first_name', 'last_name', 'account_created',
             'address_1', 'address_2', 'city', 'state', 'zip_code', 'email')
 
