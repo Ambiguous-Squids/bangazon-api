@@ -85,9 +85,9 @@ class Product(models.Model):
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
-	description = models.TextField(max_length=50)
+	description = models.TextField(max_length=4000)
 	price = models.DecimalField(max_digits=15, decimal_places=2)
-	quantity = models.PositiveSmallIntegerField(blank=True, null=True)
+	quantity = models.PositiveIntegerField(default=1)
 
 
 	class Meta:
