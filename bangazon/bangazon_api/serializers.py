@@ -36,7 +36,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
       model = models.Order
-      fields = ('active', 'customer', 'payment_type')
+      fields = '__all__'
 
 
 
@@ -47,8 +47,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = models.Product
-        fields = ('customer', 'product_type', 'order', 'name', 'description', 'price' )
-
+        fields = '__all__'
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -57,7 +56,7 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = models.Customer
-        fields = ('first_name', 'last_name', 'account_created',
-            'address_1', 'address_2', 'city', 'state', 'zip_code', 'email')
+        fields = '__all__'
+
 
 

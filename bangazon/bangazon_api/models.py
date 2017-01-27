@@ -25,7 +25,7 @@ class Customer(models.Model):
 
 class ProductType(models.Model):
 	"""
-	The Product Types table maintains the product types or 'categories' of products 
+	The Product Types table maintains the product types or 'categories' of products
 
 	@asimonia
 
@@ -41,7 +41,7 @@ class ProductType(models.Model):
 class PaymentType(models.Model):
 	"""
 	The Payment Types table maintains the different payment options associated with a customer
-	
+
 	@asimonia & @nchemsak
 
 	"""
@@ -74,6 +74,28 @@ class PaymentType(models.Model):
 	def __str__(self):
 		return '{} - {}'.format(self.payment_type_name, self.account)
 
+
+class Product(models.Model):
+	"""
+	The Products table maintains the information related to individual products
+
+	@asimonia
+
+	"""
+	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+	product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE)
+	name = models.CharField(max_length=50)
+	description = models.TextField(max_length=50)
+	price = models.DecimalField(max_digits=15, decimal_places=2)
+	quantity = models.PositiveSmallIntegerField(blank=True, null=True)
+
+
+	class Meta:
+		verbose_name_plural = 'Products'
+
+	def __str__(self):
+		return str(self.name)
+
 class Order(models.Model):
 	"""
 	The Orders table maintains information related to the products a customer wants to buy.
@@ -84,6 +106,8 @@ class Order(models.Model):
 	active = models.BooleanField(default=True)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
+	products = models.ManyToManyField(Product)
+
 
 	class Meta:
 		verbose_name_plural = 'Orders'
@@ -91,22 +115,13 @@ class Order(models.Model):
 	def __str__(self):
 		return 'Customer {} account is active? {}'.format(self.customer, self.active)
 
-class Product(models.Model):
-	"""
-	The Products table maintains the information related to individual products
 
-	@asimonia
-	
-	"""
-	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-	product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE)
-	order = models.ForeignKey(Order, on_delete=models.CASCADE)
-	name = models.CharField(max_length=50)
-	description = models.CharField(max_length=50)
-	price = models.DecimalField(max_digits=15, decimal_places=2)
 
-	class Meta:
-		verbose_name_plural = 'Products'
 
-	def __str__(self):
-		return str(self.name)
+
+
+
+
+
+
+
