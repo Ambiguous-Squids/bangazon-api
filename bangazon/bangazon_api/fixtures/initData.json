@@ -35,8 +35,7 @@
         "account": "1234567891234567",
         "expiration_date": "2017-01-25",
         "ccv": "123",
-        "payment_type_name": "VISA",
-        "category": "Debit Card"
+        "payment_type_name": "VISA"
     }
 }, {
     "model": "bangazon_api.order",

@@ -45,7 +45,6 @@ class PaymentType(models.Model):
 	)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	payment_type_name = models.CharField(max_length=16, choices=PAYMENT_TYPE_NAME_CHOICES, default=NONE)
-	category = models.CharField(max_length=50)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
 	account = models.CharField(max_length=16, unique=True)
