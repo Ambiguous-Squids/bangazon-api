@@ -1,7 +1,12 @@
 from django.db import models
 
 class Customer(models.Model):
-	"""Create Customers table for Bangazon API @asimonia"""
+	"""
+	The Customers table maintains relevant information for a customer
+
+	@asimonia
+
+	"""
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
 	account_created = models.DateTimeField(auto_now_add=True)
@@ -19,7 +24,12 @@ class Customer(models.Model):
 		return '{} {}'.format(self.first_name, self.last_name)
 
 class ProductType(models.Model):
-	"""Create Product Types table for Bagazon API @asimonia"""
+	"""
+	The Product Types table maintains the product types or 'categories' of products 
+
+	@asimonia
+
+	"""
 	category = models.CharField(max_length=50)
 
 	class Meta:
@@ -29,13 +39,18 @@ class ProductType(models.Model):
 		return str(self.category)
 
 class PaymentType(models.Model):
-	"""Create Payment Types table for Bangazon API @asimonia"""
+	"""
+	The Payment Types table maintains the different payment options associated with a customer
+	
+	@asimonia & @nchemsak
+
+	"""
 	NONE = ''
 	VISA = 'VISA'
 	MASTERCARD = 'MasterCard'
 	AMERICANEXPRESS = 'American Express'
 
-	"""Payment type choices @nchemsak"""
+
 	PAYMENT_TYPE_NAME_CHOICES = (
 		(NONE, ''),
 		(VISA, 'VISA'),
@@ -60,7 +75,12 @@ class PaymentType(models.Model):
 		return '{} - {}'.format(self.payment_type_name, self.account)
 
 class Order(models.Model):
-	"""Create Orders table for Bangazon API @asimonia"""
+	"""
+	The Orders table maintains information related to the products a customer wants to buy.
+
+	@asimonia
+
+	"""
 	active = models.BooleanField(default=True)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
@@ -72,7 +92,12 @@ class Order(models.Model):
 		return 'Customer {} account is active? {}'.format(self.customer, self.active)
 
 class Product(models.Model):
-	"""Create Products table for Bangazon API @asimonia"""
+	"""
+	The Products table maintains the information related to individual products
+
+	@asimonia
+	
+	"""
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 	product_type = models.ForeignKey(ProductType, on_delete=models.CASCADE)
 	order = models.ForeignKey(Order, on_delete=models.CASCADE)
