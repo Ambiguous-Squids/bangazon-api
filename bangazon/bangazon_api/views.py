@@ -3,6 +3,7 @@ from bangazon_api import serializers, models
 from rest_framework import viewsets
 
 
+
 class PaymentTypeViewSet(viewsets.ModelViewSet):
     """
     Creates PaymentType View
