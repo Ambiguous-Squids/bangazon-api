@@ -69,10 +69,6 @@ Change into the bangazon directory
 ```
 cd bangazon/
 ```
-Make the migrations script in the migrations folder for each app
-```
-./manage.py makemigrations
-```
 Run the migrations script to create the database
 ```
 ./manage.py migrate
