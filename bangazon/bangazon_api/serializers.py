@@ -2,6 +2,7 @@ from rest_framework import serializers
 from bangazon_api import models
 
 
+
 class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     """
