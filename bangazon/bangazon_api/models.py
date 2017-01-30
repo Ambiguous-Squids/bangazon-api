@@ -105,7 +105,7 @@ class Order(models.Model):
 	"""
 	active = models.BooleanField(default=True)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-	payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE)
+	payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE, blank = True, null = True)
 	products = models.ManyToManyField(Product)
 
 
