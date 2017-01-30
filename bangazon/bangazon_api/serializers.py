@@ -39,8 +39,6 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
       model = models.Order
       fields = '__all__'
 
-
-
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     Hyperlinked Serializer for the Product Model.

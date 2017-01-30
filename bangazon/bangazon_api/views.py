@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from bangazon_api import serializers, models
 from rest_framework import viewsets
