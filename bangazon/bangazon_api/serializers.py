@@ -66,8 +66,8 @@ class UserStaffSerializer(serializers.HyperlinkedModelSerializer):
     """
 
     class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'email')
+        model = models.Customer
+        fields = ('first_name', 'last_name', 'account_created', 'address_1', 'address_2', 'city', 'state', 'zip_code', 'email')
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -77,5 +77,5 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     # customer = CustomerSerializer(many=False, read_only=True)
 
     class Meta:
-        model = User
+        model = models.Customer
         fields = ('first_name', 'last_name')

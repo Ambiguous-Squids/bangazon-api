@@ -4,7 +4,6 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 
 
-
 class PaymentTypeViewSet(viewsets.ModelViewSet):
     """
     Creates PaymentType View
@@ -29,12 +28,11 @@ class CustomerViewSet(viewsets.ModelViewSet):
     -@mccordgh
     """
     queryset = models.Customer.objects.all().order_by('-last_name')
-    queryset = User.objects.all()
 
     def get_serializer_class(self):
         if self.request.user.is_staff:
             return serializers.UserStaffSerializer
-        return serializers.UserSerializer    serializer_class = serializers.CustomerSerializer
+        return serializers.UserSerializer    
 
 
 class OrderViewSet(viewsets.ModelViewSet):
@@ -56,15 +54,3 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
 
     queryset = models.ProductType.objects.all().order_by('-category')
     serializer_class = serializers.ProductTypeSerializer
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    User view for non-staff users
-    @mccordgh
-    """
-    queryset = User.objects.all()
-
-    def get_serializer_class(self):
-        if self.request.user.is_staff:
-            return serializers.UserStaffSerializer
-        return serializers.UserSerializer
