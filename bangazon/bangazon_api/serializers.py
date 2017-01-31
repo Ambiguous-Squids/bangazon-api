@@ -1,7 +1,36 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 from bangazon_api import models
 
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Creates a Staff Serializer
+    @asimonia
+    """
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'username', 'email', 'password', 'groups',
+                  'is_staff', 'is_active', 'is_superuser', 'last_login',
+                  'date_joined',)
+
+class RestrictedUserSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Hyperlinked Serializer for the Customer Model.
+    @mccordgh
+    """
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name', )
+
+class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Hyperlinked Serializer for the Customer Model.
+    @mccordgh
+    """
+    class Meta:
+        model = models.Customer
+        fields = '__all__'
 
 class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -10,10 +39,10 @@ class PaymentTypeSerializer(serializers.HyperlinkedModelSerializer):
     @rtwhitfield84
 
     """
-
     class Meta:
         model = models.PaymentType
-        fields = '__all__'
+        fields = ('customer', 'payment_type_name', 'first_name', 'last_name', 'account',
+                  'expiration_date', 'ccv',)
 
 class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -25,7 +54,7 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = models.ProductType
-        fields = '__all__'
+        fields = ('category', )
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -37,9 +66,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
       model = models.Order
-      fields = '__all__'
-
-
+      fields = ('active', 'customer', 'payment_type', 'products', )
 
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -48,16 +75,10 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = models.Product
-        fields = '__all__'
+        fields = ('customer', 'product_type', 'name', 'description', 'price', 'quantity', )
+        depth = 2
 
-class CustomerSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    Hyperlinked Serializer for the Customer Model.
-    @mccordgh
-    """
-    class Meta:
-        model = models.Customer
-        fields = '__all__'
+
 
 
 
