@@ -9,7 +9,6 @@ router.register(r'customers', views.CustomerViewSet)
 router.register(r'orders', views.OrderViewSet)
 router.register(r'payment_types', views.PaymentTypeViewSet)
 router.register(r'product_types', views.ProductTypeViewSet)
-# router.register(r'customers', views.UserViewSet)
 
 
 urlpatterns = [
