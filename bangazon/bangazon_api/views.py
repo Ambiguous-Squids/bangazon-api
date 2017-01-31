@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from bangazon_api import serializers, models
 from rest_framework import viewsets
+from django.contrib.auth.models import User
 
 
 
@@ -28,17 +29,22 @@ class CustomerViewSet(viewsets.ModelViewSet):
     -@mccordgh
     """
     queryset = models.Customer.objects.all().order_by('-last_name')
-    serializer_class = serializers.CustomerSerializer
+    queryset = User.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return serializers.UserStaffSerializer
+        return serializers.UserSerializer    serializer_class = serializers.CustomerSerializer
 
 
 class OrderViewSet(viewsets.ModelViewSet):
-	"""
-	API endpoint that allows Orders to be viewed or edited.
-	-@asimonia
-	"""
+    """
+    API endpoint that allows Orders to be viewed or edited.
+    -@asimonia
+    """
 
-	queryset = models.Order.objects.all().order_by('-customer')
-	serializer_class = serializers.OrderSerializer
+    queryset = models.Order.objects.all().order_by('-customer')
+    serializer_class = serializers.OrderSerializer
 
 class ProductTypeViewSet(viewsets.ModelViewSet):
 
@@ -50,3 +56,15 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
 
     queryset = models.ProductType.objects.all().order_by('-category')
     serializer_class = serializers.ProductTypeSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    User view for non-staff users
+    @mccordgh
+    """
+    queryset = User.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.user.is_staff:
+            return serializers.UserStaffSerializer
+        return serializers.UserSerializer
