@@ -32,9 +32,9 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #    'rest_framework.permissions.IsAuthenticated',
-    # ),
+    'DEFAULT_PERMISSION_CLASSES': (
+       'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 # Application definition
