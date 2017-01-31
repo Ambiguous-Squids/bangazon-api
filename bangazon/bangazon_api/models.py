@@ -9,7 +9,7 @@ class Customer(models.Model):
 
 	"""
 	# Links Customer to a User model instance
-	user = models.OneToOneField(User)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	account_created = models.DateTimeField(auto_now_add=True)
 	address_1 = models.CharField(max_length=128)
 	address_2 = models.CharField(max_length=128, blank=True)
