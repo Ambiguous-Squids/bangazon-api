@@ -76,7 +76,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Product
         fields = ('customer', 'product_type', 'name', 'description', 'price', 'quantity', )
-        depth = 2
+
 
 
 
