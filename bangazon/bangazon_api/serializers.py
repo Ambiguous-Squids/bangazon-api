@@ -78,7 +78,10 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('customer', 'product_type', 'name', 'description', 'price', 'quantity', )
 
 
-
+class LoginSerializer(serializers.ModelSerializer):
+     class Meta:
+         model=User
+         fields=('email','password') 
 
 
 

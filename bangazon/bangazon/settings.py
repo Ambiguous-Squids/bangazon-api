@@ -15,6 +15,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FIXTURE_DIRS = (
+   '/bangazon/bangazon_api/fixtures/',
+)
 
 STATIC_URL = '/static/'
 
