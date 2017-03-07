@@ -54,7 +54,7 @@ class ProductTypeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = models.ProductType
-        fields = ('category', )
+        fields = ('category', 'id')
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -75,7 +75,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = models.Product
-        fields = ('customer', 'product_type', 'name', 'description', 'price', 'quantity', )
+        fields = ('customer', 'product_type', 'name', 'description', 'price', 'quantity', 'id')
 
 
 
