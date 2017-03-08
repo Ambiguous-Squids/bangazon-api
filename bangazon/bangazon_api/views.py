@@ -57,7 +57,6 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.OrderSerializer
 
 class ProductTypeViewSet(viewsets.ModelViewSet):
-
     """
     API endpoint that allows Product Types to be viewed or edited.
     @rtwhitfield84
