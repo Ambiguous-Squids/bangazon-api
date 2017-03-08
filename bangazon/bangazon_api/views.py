@@ -1,7 +1,11 @@
 from django.contrib.auth.models import User
+from django.contrib.auth import logout, login, authenticate
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from bangazon_api import serializers, models
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework.permissions import IsAuthenticated, AllowAny
+import json
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -13,7 +17,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.request.user.is_superuser:
             return serializers.UserSerializer
-        return serializers.RestrictedUserSerializer 
+        return serializers.RestrictedUserSerializer
 
 
 class PaymentTypeViewSet(viewsets.ModelViewSet):
@@ -33,7 +37,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = models.Product.objects.all().order_by('-name')
     serializer_class = serializers.ProductSerializer
 
-    
+
 class CustomerViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows Customers to be viewed or edited.
@@ -62,3 +66,40 @@ class ProductTypeViewSet(viewsets.ModelViewSet):
 
     queryset = models.ProductType.objects.all().order_by('-category')
     serializer_class = serializers.ProductTypeSerializer
+
+
+class LoginView(generics.RetrieveAPIView):
+    permission_classes = (AllowAny,)
+
+
+    error_messages = {
+        'invalid': "Invalid username or password",
+        'disabled': "Sorry, this account is suspended",
+    }
+
+    def _error_response(self, message_key):
+        data = json.dumps({
+            'success': False,
+            'message': self.error_messages[message_key],
+            'user_id': None,
+        })
+
+    def post(self,request):
+        req_body = json.loads(request.body.decode())
+        username = req_body['username']
+        password = req_body['password']
+        user = authenticate(username=username, password=password)
+
+        success = False
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                data = json.dumps({
+                    'success': True,
+                    'username': user.username,
+                    'email': user.email,
+                })
+                return HttpResponse(data, content_type='application/json')
+
+            return HttpResponse(self._error_response('disabled'), content_type='application/json')
+        return HttpResponse(self._error_response('invalid'), content_type='application/json')
